@@ -7,26 +7,34 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.ahmed.todoister.model.Priority;
+import com.ahmed.todoister.model.Task;
+import com.ahmed.todoister.model.TaskViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity {
+    private TaskViewModel taskViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+       // setSupportActionBar(toolbar);
+        taskViewModel = new ViewModelProvider.AndroidViewModelFactory(
+                MainActivity.this.getApplication())
+                .create(TaskViewModel.class);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
+        fab.setOnClickListener(view -> {
+           Task task = new Task("Todo", Priority.HIGH, Calendar.getInstance().getTime(),
+                   Calendar.getInstance().getTime(), false);
+           TaskViewModel.insert(task);
         });
     }
 
