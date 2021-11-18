@@ -9,8 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Todoister">
+        <activity android:name=".AboutActivity"/>
         <activity
             android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Todoister.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
