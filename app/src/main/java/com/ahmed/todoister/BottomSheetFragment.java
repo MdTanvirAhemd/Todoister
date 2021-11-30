@@ -11,8 +11,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.Group;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -67,6 +69,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
         tomorrowChip.setOnClickListener(this);
         Chip nextWeekChip = view.findViewById(R.id.next_week_chip);
         nextWeekChip.setOnClickListener(this);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         return view;
     }
@@ -79,7 +82,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
             isEdit = sharedViewModel.getIsEdit();
             Task task = sharedViewModel.getSelectedItem().getValue();
             enterTodo.setText(task.getTask());
-            Log.d("MY", "onViewCreated: " + isEdit + " " + task.getTask());
+          //  Log.d("MY", "onViewCreated: " + isEdit + " " + task.getTask());
         }
     }
 
@@ -151,8 +154,16 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Vi
                 }
 
             }else {
-                Snackbar.make(saveButton, R.string.empty_field, Snackbar.LENGTH_LONG)
-                        .show();
+              //  Snackbar.make(saveButton, R.string.empty_field, Snackbar.LENGTH_LONG).show();
+                if (TextUtils.isEmpty(task)) {
+                    Toast.makeText(getContext(),"Empty Task",Toast.LENGTH_SHORT).show();
+                }
+                if (dueDate == null) {
+                    Toast.makeText(getContext(),"Please!! set Date....",Toast.LENGTH_SHORT).show();
+                }
+                if (priority == null) {
+                    Toast.makeText(getContext(),"Please!! set priority....",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
