@@ -11,6 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:textColor">@color/purple_200</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -22,4 +23,7 @@
     <style name="Theme.Todoister.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Todoister.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="ThemeOverlay.MyPopupTheme" parent="Theme.AppCompat.Light">
+        <item name="android:textColor">@color/purple_200</item>
+    </style>
 </resources>

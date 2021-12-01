@@ -4,8 +4,8 @@
     tools:context="com.ahmed.todoister.MainActivity">
     <item
         android:id="@+id/action_settings"
+        android:iconTint="@color/purple_200"
         android:orderInCategory="100"
-        android:iconTint="@color/black"
         android:title="@string/action_settings"
         app:showAsAction="never" />
 </menu>
